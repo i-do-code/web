@@ -3,9 +3,11 @@
   <p-calendar [(ngModel)]="date"></p-calendar>
   <label>Police District</label>
   <select>
-      <option *ngFor="let district of districts" value= {{districts}}>
+      <option *ngFor="let district of districts" value= {{district}}>
         {{district}}
       </option>
     </select>
 </div>
 
+<app-crime-prediction [crimeModel]="crimeModel">
+</app-crime-prediction>
