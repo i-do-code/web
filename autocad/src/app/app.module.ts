@@ -5,6 +5,7 @@ import {CalendarModule, DropdownModule, ButtonModule} from 'primeng/primeng';
 import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { CrimePredictionComponent } from './components/crime-prediction/crime-prediction.component';
+import { HttpClientModule } from '@angular/common/http';
 
 @NgModule({
   declarations: [
@@ -17,7 +18,8 @@ import { CrimePredictionComponent } from './components/crime-prediction/crime-pr
     CalendarModule,
     DropdownModule,
     FormsModule,
-    ButtonModule
+    ButtonModule,
+    HttpClientModule
   ],
   providers: [],
   bootstrap: [AppComponent]
