@@ -1,5 +1,6 @@
 import { Component, OnInit, Input } from '@angular/core';
 import { crimeModels } from '../../models/crimeModel';
+import {ChartModule} from 'primeng/primeng';
 
 @Component({
   selector: 'app-crime-prediction',
@@ -8,9 +9,29 @@ import { crimeModels } from '../../models/crimeModel';
 })
 export class CrimePredictionComponent implements OnInit {
 
+  crimeData: any;
+
   @Input() crimeModel:crimeModels;
 
-  constructor() { }
+  constructor() { 
+    this.crimeData = {
+      labels: ['A','B','C'],
+      datasets: [
+          {
+              data: [300, 50, 100],
+              backgroundColor: [
+                  "#FF6384",
+                  "#36A2EB",
+                  "#FFCE56"
+              ],
+              hoverBackgroundColor: [
+                  "#FF6384",
+                  "#36A2EB",
+                  "#FFCE56"
+              ]
+          }]    
+      };
+  }
 
   ngOnInit() {
   }
