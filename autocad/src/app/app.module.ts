@@ -6,11 +6,13 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { CrimePredictionComponent } from './components/crime-prediction/crime-prediction.component';
 import { HttpClientModule } from '@angular/common/http';
+import { DispatchPredictionComponent } from './components/dispatch-prediction/dispatch-prediction.component';
 
 @NgModule({
   declarations: [
     AppComponent,
-    CrimePredictionComponent
+    CrimePredictionComponent,
+    DispatchPredictionComponent
   ],
   imports: [
     BrowserModule,

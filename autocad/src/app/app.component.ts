@@ -3,6 +3,7 @@ import {Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import {CalendarModule, DropdownModule, SelectItem, ButtonModule} from 'primeng/primeng';
 import { crimeModels } from './models/crimeModel';
+import { dispatchModel } from './models/dispatchModel';
 import { CrimePredictionComponent } from './components/crime-prediction/crime-prediction.component';
 import { HttpClient } from '@angular/common/http';
 
@@ -10,11 +11,12 @@ import { HttpClient } from '@angular/common/http';
 @Component({
   selector: 'app-root',
   templateUrl: './app.component.html',
-  styleUrls: ['./app.component.css']
+  styleUrls: ['./app.component.css'] 
 })
 export class AppComponent {
   title = 'AutoCad';
   crimeModel:crimeModels;
+  dispatchModel:dispatchModel;
   day: number;
   month:number;
   year: number;
@@ -26,6 +28,7 @@ export class AppComponent {
   constructor(private http: HttpClient){
     // create an empty crimemodel that'll get populated by the get request
     this.crimeModel = new crimeModels();
+    this.dispatchModel = new dispatchModel();
     this.crimeModel.totalCrime = 5;
   }
 
@@ -34,18 +37,30 @@ export class AppComponent {
     this.day = this.date.getDate();
     this.month = this.date.getMonth() + 1;
     this.year = this.date.getFullYear()
-    this.getData();
+    this.route = 'api/' + this.selectedDepartent + '/' + this.year
+    + '/' + this.month + '/' + this.day;
+    this.getCrime();
+    this.getDispatch();
+     
   }
 
   //send the GET request on /:pd/:year/:month/:day
-    getData(){
-      this.route = 'api/' + this.selectedDepartent + '/' + this.year
-      + '/' + this.month + '/' + this.day;
+    getCrime(){
+     
       this.http.get('https://api.github.com/users/seeschweiler').subscribe(data => {
         console.log(data);
         console.log(this.route);
       });
     }
+
+     //send the GET request on /:pd/:year/:month/:day
+     getDispatch(){
+      
+       this.http.get('https://api.github.com/users/seeschweiler').subscribe(data => {
+         console.log(data);
+         console.log(this.route);
+       });
+     }
 
     setData(data){
       // set the retured data the the crimeModel

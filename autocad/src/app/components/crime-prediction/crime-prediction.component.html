@@ -1,11 +1,18 @@
-<div align="center" id="infoPane">
-<p>
-  crime-prediction works!
-</p>
-<p>{{crimeModel.totalCrime}}</p>
+<div align="center" id="crimeInfo">
+  <p>
+    crime-prediction works!
+  </p>
+  <p>{{crimeModel.totalCrime}}</p>
 
-<div id="chart">
-    <p-chart type="doughnut" [data]="crimeData"></p-chart>
-</div>
+  <div class="row">
+      <h2>Predictive Crime breakdown</h2>
+    <div class="col-md-6">
+        <p-chart type="pie" [data]="crimeData" width="400" height="400" [options]="options" (onDataSelect)="selectData($event)"></p-chart>
+    </div>
+      
+      <div id="crimeInfo" class="col-md-6">
+        <p>List infomration about our predictive model</p>
+      </div>
+  </div>
 
 </div>

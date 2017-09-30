@@ -1,27 +1,27 @@
 import { Component, OnInit, Input } from '@angular/core';
-import { crimeModels } from '../../models/crimeModel';
+import { dispatchModel } from '../../models/dispatchModel';
 import {ChartModule} from 'primeng/primeng';
 
 @Component({
-  selector: 'app-crime-prediction',
-  templateUrl: './crime-prediction.component.html',
-  styleUrls: ['./crime-prediction.component.css'],
+  selector: 'app-dispatch-prediction',
+  templateUrl: './dispatch-prediction.component.html',
+  styleUrls: ['./dispatch-prediction.component.css']
 })
-export class CrimePredictionComponent implements OnInit {
+export class DispatchPredictionComponent implements OnInit {
   options = {
     responsive: false,
     maintainAspectRatio: false
   };
-  crimeData: any;
+  dispatchData: any;
 
-  @Input() crimeModel:crimeModels;
+  @Input() dispatchModel:dispatchModel;
 
   constructor() { 
-    this.crimeData = {
+    this.dispatchData = {
       labels: ['A','B','C'],
       datasets: [
           {
-              data: [300, 50, 100],
+              data: [200, 150, 50],
               backgroundColor: [
                   "#FF6384",
                   "#36A2EB",
@@ -40,7 +40,7 @@ export class CrimePredictionComponent implements OnInit {
   }
 
   selectData(event) {
-    console.log("an event!");
+    console.log("dispatch event!");
     //event.dataset = Selected dataset
     //event.element = Selected element
     //event.element._datasetIndex = Index of the dataset in data
