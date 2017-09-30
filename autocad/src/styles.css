@@ -1,1 +1,16 @@
 /* You can add global styles to this file, and also import other style files */
+#bgimg{
+    width: 100%;
+    background-image: url(./assets/chicago-skyline.jpg);
+    height: 265px;
+    background-position: center;
+    box-shadow: 0px 2px 26px #888888;
+}
+
+#titleHeading{
+    text-align: center;
+    color: white;
+    padding-top: 100px;
+    font-weight: 700;
+    font-family: inherit;
+}

@@ -1,12 +1,13 @@
-<div align="center"> 
-  <label>Date</label>
-  <p-calendar [(ngModel)]="date"></p-calendar>
-  <label>Police District</label>
-  <select>
+<div align="center" class="form-group"> 
+  <label for="date">Date</label>
+  <p-calendar [(ngModel)]="date" id="date"></p-calendar>
+  <label for="district">Police District</label>
+  <select id="district">
       <option *ngFor="let district of districts" value= {{district}}>
         {{district}}
       </option>
     </select>
+<button pButton type="button" (click)="onclick()" label="Submit"></button>
 </div>
 
 <app-crime-prediction [crimeModel]="crimeModel">
