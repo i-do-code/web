@@ -1,5 +1,5 @@
 export class foreCastModel {
-    currentDate: string;
+    currentDate: Date;
     districtNumber: number;
-    crimes: [{date:Date, count: number}];
+    crimes: Object;
 }

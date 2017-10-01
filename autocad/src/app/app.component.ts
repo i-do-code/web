@@ -29,6 +29,7 @@ export class AppComponent {
   foreCastRoute: string;
   showData: boolean;
   showForeCast: boolean;
+  showBasic: boolean;
   districts = [1,2,3,4,5,6,7,8,9,10,11,12,14,15,16,17,18,19,20,22,24,25];
   dailyDistrict: number;
   futureDistrict: number;
@@ -36,6 +37,7 @@ export class AppComponent {
   constructor(private http: HttpClient){
     this.showForeCast = false;
     this.showData = false;
+    this.showBasic = true;
     this.url = 'http://13.58.126.12:5000/';
     // create an empty crimemodel that'll get populated by the get request
     this.crimeModel = new crimeModels();
@@ -56,6 +58,8 @@ export class AppComponent {
 
     this.getForecast();
     this.showForeCast = true;
+    this.showData = false;
+    this.showBasic = false;
      
   }
 
@@ -65,8 +69,9 @@ export class AppComponent {
     this.http.get(this.url  + this.foreCastRoute).subscribe(data => {
       console.log(data);
       console.log(this.foreCastRoute);
-      this.foreCastModel.currentDate = data["0"]["0"];
+      this.foreCastModel.currentDate = this.dateFuture;
       this.foreCastModel.districtNumber = this.dailyDistrict;
+      this.foreCastModel.crimes = data;
       // this.foreCastModel.crimes = this.dateDaily;
       console.log(this.crimeModel.count);
 
@@ -85,14 +90,17 @@ export class AppComponent {
     this.getCrime();
     //this.getDispatch();
     this.getData();
+    this.showForeCast = false;
     this.showData = true;
+    this.showBasic = false;
 
   }
   
 
   back(){
-    this.showData = false;
     this.showForeCast = false;
+    this.showData = false;
+    this.showBasic = true;
   }
 
     // for getting the daily prediction

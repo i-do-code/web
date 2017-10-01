@@ -26,7 +26,7 @@
 
   <hr />
 
-<div class="row" [hidden]="showData" style="padding-top:25px; text-align:center;">
+<div class="row" [hidden]="!showBasic" style="padding-top:25px; text-align:center;">
   <h3>AccuCrime is a Chicago specific crime analysis and predictive platform.</h3>
   <h3>Our goal is to leverage large datasets to create an accurate crime forcast to help aid in CDP</h3>
   <div class="col-md-6" align="center">
@@ -51,6 +51,7 @@
 </div>
 
 <div [hidden]="!showForeCast">
+    <button pButton type="button" (click)="back()" label="back"s></button>
 <app-fore-cast [foreCastModel]="foreCastModel" >
 </app-fore-cast>
 </div>
