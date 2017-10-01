@@ -3,7 +3,7 @@ import {Http, Response } from '@angular/http';
 import 'rxjs/add/operator/map';
 import {CalendarModule, DropdownModule, SelectItem, ButtonModule} from 'primeng/primeng';
 import { crimeModels } from './models/crimeModel';
-import { dispatchModel } from './models/dispatchModel';
+import { foreCastModel } from './models/foreCastModel';
 import { dataModel } from './models/dataModel';
 import { CrimePredictionComponent } from './components/crime-prediction/crime-prediction.component';
 import { HttpClient } from '@angular/common/http';
@@ -16,48 +16,86 @@ import { HttpClient } from '@angular/common/http';
 })
 export class AppComponent {
   url: string;
-  title = 'AutoCad';
+  title = 'AccuCrime';
   crimeModel:crimeModels;
-  dispatchModel:dispatchModel;
+  foreCastModel:foreCastModel;
   dataModel: dataModel;
   day: number;
   month:number;
   year: number;
-  date: Date;
+  dateDaily: Date;
+  dateFuture:Date;
   route: string;
+  foreCastRoute: string;
   showData: boolean;
+  showForeCast: boolean;
   districts = [1,2,3,4,5,6,7,8,9,10,11,12,14,15,16,17,18,19,20,22,24,25];
-  selectedDepartent: number;
+  dailyDistrict: number;
+  futureDistrict: number;
 
   constructor(private http: HttpClient){
+    this.showForeCast = false;
+    this.showData = false;
     this.url = 'http://13.58.126.12:5000/';
     // create an empty crimemodel that'll get populated by the get request
     this.crimeModel = new crimeModels();
-    this.dispatchModel = new dispatchModel();
+    this.foreCastModel = new foreCastModel();
     this.dataModel = new dataModel();
-    this.dispatchModel.totalCrime = -1;
     //this.selectedDepartent = 1;
   }
 
-  onclick(){
+  forecast(){
 
-    this.day = this.date.getDate();
-    this.month = this.date.getMonth() + 1;
-    this.year = this.date.getFullYear()
-    this.route = this.selectedDepartent + '/' + this.year
+    console.log("forecast");
+
+    this.day = this.dateFuture.getDate();
+    this.month = this.dateFuture.getMonth() + 1;
+    this.year = this.dateFuture.getFullYear()
+    this.foreCastRoute ='forecast/crime/' + this.futureDistrict + '/' + this.year
+    + '/' + this.month + '/' + this.day;
+
+    this.getForecast();
+    this.showForeCast = true;
+     
+  }
+
+  getForecast(){
+    this.foreCastModel = new foreCastModel();
+    console.log(this.url  + this.foreCastRoute);
+    this.http.get(this.url  + this.foreCastRoute).subscribe(data => {
+      console.log(data);
+      console.log(this.foreCastRoute);
+      this.foreCastModel.currentDate = data["0"]["0"];
+      this.foreCastModel.districtNumber = this.dailyDistrict;
+      // this.foreCastModel.crimes = this.dateDaily;
+      console.log(this.crimeModel.count);
+
+    });
+  }
+
+
+  daily(){
+    console.log("daily");
+    this.day = this.dateDaily.getDate();
+    this.month = this.dateDaily.getMonth() + 1;
+    this.year = this.dateDaily.getFullYear()
+    // /forecast/crime/
+    this.route =  + this.dailyDistrict + '/' + this.year
     + '/' + this.month + '/' + this.day;
     this.getCrime();
     //this.getDispatch();
     this.getData();
     this.showData = true;
-     
+
   }
+  
 
   back(){
     this.showData = false;
+    this.showForeCast = false;
   }
 
-  //send the GET request on /:pd/:year/:month/:day
+    // for getting the daily prediction
     getCrime(){
       this.crimeModel = new crimeModels();
       console.log(this.url + 'predict/crime/' + this.route);
@@ -65,21 +103,12 @@ export class AppComponent {
         console.log(data);
         console.log(this.route);
         this.crimeModel.count = data["0"]["0"];
-        this.crimeModel.pd = this.selectedDepartent;
-        this.crimeModel.date = this.date;
+        this.crimeModel.pd = this.dailyDistrict;
+        this.crimeModel.date = this.dateDaily;
         console.log(this.crimeModel.count);
 
       });
     }
-
-     //send the GET request on /:pd/:year/:month/:day
-     getDispatch(){
-      
-      //  this.http.get('https://api.github.com/users/seeschweiler').subscribe(data => {
-      //    console.log(data);
-      //    console.log(this.route);
-      //  });
-     }
 
      getData(){
        this.dataModel = new dataModel();
@@ -97,10 +126,6 @@ export class AppComponent {
       });
      }
 
-    setData(data){
-      // set the retured data the the crimeModel
-      // iterate over the array of predicted crimes
-    }
 }
 
 // get user input

@@ -6,15 +6,15 @@ import {BrowserAnimationsModule} from '@angular/platform-browser/animations';
 import { AppComponent } from './app.component';
 import { CrimePredictionComponent } from './components/crime-prediction/crime-prediction.component';
 import { HttpClientModule } from '@angular/common/http';
-import { DispatchPredictionComponent } from './components/dispatch-prediction/dispatch-prediction.component';
 import { DataVisulizationComponent } from './components/data-visulization/data-visulization.component';
+import { ForeCastComponent } from './components/fore-cast/fore-cast.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CrimePredictionComponent,
-    DispatchPredictionComponent,
-    DataVisulizationComponent
+    DataVisulizationComponent,
+    ForeCastComponent
   ],
   imports: [
     BrowserModule,
