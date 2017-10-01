@@ -1,21 +1,40 @@
-<div align="center" class="form-group"> 
+<div align="center" class="form-group" id="form-1"> 
+  <h3>Daily Crime Prediction</h3>
   <label for="date">Date</label>
   <p-calendar [(ngModel)]="date" id="date"></p-calendar>
   <label for="district">Police District</label>
   <select id="district">
-      <option *ngFor="let district of districts" value= {{district}}>
+      <option *ngFor="let district of districts" value={{district}}>
         {{district}}
       </option>
     </select>
 <button pButton type="button" (click)="onclick()" label="Submit" id="submitBtn"></button>
 </div>
 
-<app-crime-prediction [crimeModel]="crimeModel" [hidden]="!showData">
+
+
+<div class="row" [hidden]="showData" style="padding-top:25px; text-align:center;">
+  <h3>Auto Cad is a Chicago specific crime analysis and predictive platform.</h3>
+  <h3>Our goal is to leverage large datasets to create an accurate crime forcast to help aid in CDP</h3>
+  <div class="col-md-6" align="center">
+    <img src="../assets/totalCrime.png" width="75%"/>
+    <p>Criminal trend over the past 5 years</p>
+  </div>
+  <div class="col-md-6" align="center">
+      <img src="../assets/crimeVsWeather.png" width="75%"/>
+      <p>Corrilation of wheather statistics and crime</p>
+  </div>
+</div>
+
+<div [hidden]="!showData">
+    <button pButton type="button" (click)="back()" label="back"s></button>
+<app-crime-prediction [crimeModel]="crimeModel" >
 </app-crime-prediction>
 
 
-<app-dispatch-prediction [dispatchModel]="dispatchModel" [hidden]="!showData">
-  </app-dispatch-prediction>
+<!-- <app-dispatch-prediction [dispatchModel]="dispatchModel" [hidden]="!showData">
+  </app-dispatch-prediction> -->
 
-<app-data-visulization [dataModel]="dataModel" [hidden]="!showData">
+<app-data-visulization [dataModel]="dataModel" >
 </app-data-visulization>
+</div>

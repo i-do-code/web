@@ -1,4 +1,16 @@
-<div align="center" id="crimeInfo" [hidden]="crimeModel.totalCrime != -1">
+<div align="center" id="crimeInfo" >
+<div class="w3-container">
+    <h3>Predictive Crime breakdown for district: {{crimeModel.pd}}</h3>
+  
+    <div class="w3-card-4" style="width:50%">
+      <h2>{{crimeModel.count}}</h2>
+      <div class="w3-container w3-center">
+      <h2>{{crimeModel.date}}</h2>
+      </div>
+    </div>
+  </div>
+</div>
+<!-- <div align="center" id="crimeInfo" [hidden]="crimeModel.totalCrime != -1">
   <div class="row">
       <h2>Predictive Crime breakdown for district: {{crimeModel.districtNumber}}</h2>
     <div class="col-md-6">
@@ -13,4 +25,7 @@
         </ul>
       </div>
   </div>
-</div>
+  one call for 
+</div> -->
+
+

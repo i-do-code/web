@@ -35,9 +35,8 @@ export class AppComponent {
     this.crimeModel = new crimeModels();
     this.dispatchModel = new dispatchModel();
     this.dataModel = new dataModel();
-    this.crimeModel.totalCrime = -1;
     this.dispatchModel.totalCrime = -1;
-    this.selectedDepartent = 1;
+    //this.selectedDepartent = 1;
   }
 
   onclick(){
@@ -47,19 +46,29 @@ export class AppComponent {
     this.year = this.date.getFullYear()
     this.route = this.selectedDepartent + '/' + this.year
     + '/' + this.month + '/' + this.day;
-    //this.getCrime();
-    this.getDispatch();
+    this.getCrime();
+    //this.getDispatch();
     this.getData();
     this.showData = true;
      
   }
 
+  back(){
+    this.showData = false;
+  }
+
   //send the GET request on /:pd/:year/:month/:day
     getCrime(){
-     
-      this.http.get('https://api.github.com/users/seeschweiler').subscribe(data => {
+      this.crimeModel = new crimeModels();
+      console.log(this.url + 'predict/crime/' + this.route);
+      this.http.get(this.url + 'predict/crime/' + this.route).subscribe(data => {
         console.log(data);
         console.log(this.route);
+        this.crimeModel.count = data["0"]["0"];
+        this.crimeModel.pd = this.selectedDepartent;
+        this.crimeModel.date = this.date;
+        console.log(this.crimeModel.count);
+
       });
     }
 
@@ -73,6 +82,7 @@ export class AppComponent {
      }
 
      getData(){
+       this.dataModel = new dataModel();
       console.log(this.url + 'data/' + this.route);
       this.http.get(this.url + 'data/' + this.route).subscribe(data => {
         console.log(data);
