@@ -7,13 +7,15 @@
         {{district}}
       </option>
     </select>
-<button pButton type="button" (click)="onclick()" label="Submit"></button>
+<button pButton type="button" (click)="onclick()" label="Submit" id="submitBtn"></button>
 </div>
 
-<app-crime-prediction [crimeModel]="crimeModel">
+<app-crime-prediction [crimeModel]="crimeModel" [hidden]="!showData">
 </app-crime-prediction>
 
 
-
-<app-dispatch-prediction [dispatchModel]="dispatchModel">
+<app-dispatch-prediction [dispatchModel]="dispatchModel" [hidden]="!showData">
   </app-dispatch-prediction>
+
+<app-data-visulization [dataModel]="dataModel" [hidden]="!showData">
+</app-data-visulization>

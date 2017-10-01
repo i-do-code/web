@@ -7,12 +7,14 @@ import { AppComponent } from './app.component';
 import { CrimePredictionComponent } from './components/crime-prediction/crime-prediction.component';
 import { HttpClientModule } from '@angular/common/http';
 import { DispatchPredictionComponent } from './components/dispatch-prediction/dispatch-prediction.component';
+import { DataVisulizationComponent } from './components/data-visulization/data-visulization.component';
 
 @NgModule({
   declarations: [
     AppComponent,
     CrimePredictionComponent,
-    DispatchPredictionComponent
+    DispatchPredictionComponent,
+    DataVisulizationComponent
   ],
   imports: [
     BrowserModule,

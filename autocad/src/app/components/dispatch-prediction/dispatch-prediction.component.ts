@@ -17,6 +17,7 @@ export class DispatchPredictionComponent implements OnInit {
   @Input() dispatchModel:dispatchModel;
 
   constructor() { 
+      
     this.dispatchData = {
       labels: ['A','B','C'],
       datasets: [
