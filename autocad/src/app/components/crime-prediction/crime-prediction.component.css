@@ -1,3 +1,9 @@
-#infoPane{
+#crimeInfo{
     margin-top: 50px;
+    height: 350px;
 }
+
+#chart{
+    height: 100px;
+}
+

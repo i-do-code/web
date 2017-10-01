@@ -1,3 +1,5 @@
 export class crimeModels {
-    totalCrime:number;
+    date: Date;
+    pd: number;
+    count: number;
 }

@@ -1,0 +1,20 @@
+<div class="row" align="center">
+    <div class="col-md-12">
+        <div class="panel panel-default">
+            <!-- Default panel contents -->
+            <div class="panel-heading">Forecast</div>
+            
+          <div *ngFor="let crime of foreCastModel.crimes">
+            <div class="w3-card-4" style="width:25%">
+                <h2>{{crime}}</h2>
+                <div class="w3-container w3-center">
+                <h2>{{foreCastModel.date}}</h2>
+                </div>
+            </div>
+          </div>
+          
+           
+          </div>
+    </div>
+  </div>
+  

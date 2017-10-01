@@ -1,6 +1,15 @@
-<div align="center" id="infoPane">
-<p>
-  crime-prediction works!
-</p>
-<p>{{crimeModel.totalCrime}}</p>
+<div align="center" id="crimeInfo" >
+<div class="w3-container">
+    <h3>Predictive Crime breakdown for district: {{crimeModel.pd}}</h3>
+  
+    <div class="w3-card-4" style="width:50%">
+      <h3>Count: {{crimeModel.count}}</h3>
+      <div class="w3-container w3-center">
+      <h4>{{crimeModel.date}}</h4>
+      </div>
+    </div>
+  </div>
 </div>
+
+
+
