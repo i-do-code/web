@@ -30,7 +30,7 @@ export class AppComponent {
   selectedDepartent: number;
 
   constructor(private http: HttpClient){
-    this.url = 'http://18.221.239.120:5000/';
+    this.url = 'http://13.58.126.12:5000/';
     // create an empty crimemodel that'll get populated by the get request
     this.crimeModel = new crimeModels();
     this.dispatchModel = new dispatchModel();

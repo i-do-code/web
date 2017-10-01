@@ -1,9 +1,36 @@
-<div align="center">
-  <div class="row">
-      <h2>City Information</h2>
-    <div class="col-md-12">
-        <p-chart type="bar" [data]="graphData" width="1200" height="400" [options]="options"></p-chart>
+<div class="row" align="center">
+  <div class="col-md-8 col-md-offset-2">
+      <div class="panel panel-default">
+          <!-- Default panel contents -->
+          <div class="panel-heading">City Information</div>
+          <div class="panel-body">
+            <p>All data used is real Chicago data and can be found <a href="https://data.cityofchicago.org/">here</a></p>
+          </div>
+        
+          <!-- Table -->
+          <table class="table">
+            <tr>
+              <td>Abandoned Vehicles</td>
+              <td>{{dataModel.abandoned_vehicle}}</td>
+            </tr>
+            <tr>
+              <td>Abandoned Buildings</td>
+              <td>{{dataModel.abandoned_building}}</td>
+            </tr>
+            <tr>
+              <td>Temperature</td>
+              <td>{{dataModel.temperature}}F</td>
+            </tr>
+            <tr>
+              <td>Alley Lights Out</td>
+              <td>{{dataModel.alley_light_out}}</td>
+            </tr>
+            <tr>
+              <td>Street Lights Out</td>
+              <td>{{dataModel.street_light_out}}</td>
+            </tr>
+          </table>
+        </div>
   </div>
-  <small>All data used is real <a href="https://data.cityofchicago.org/">Chicago data</a></small>
 </div>
   
