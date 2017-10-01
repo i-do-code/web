@@ -110,7 +110,7 @@ export class AppComponent {
       this.http.get(this.url + 'predict/crime/' + this.route).subscribe(data => {
         console.log(data);
         console.log(this.route);
-        this.crimeModel.count = data["0"]["0"];
+        this.crimeModel.count = data['prediction'];
         this.crimeModel.pd = this.dailyDistrict;
         this.crimeModel.date = this.dateDaily;
         console.log(this.crimeModel.count);
